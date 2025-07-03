@@ -1,0 +1,8 @@
+#command to install the required packages: pip install -r requirements.txt
+
+Flask
+bcrypt
+python-dotenv
+flask_sqlalchemy
+types-itsdangerous
+flask-wtf
