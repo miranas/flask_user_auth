@@ -35,7 +35,8 @@ def create_app():
 
     
     
-    print("SQLALCHEMY_DATABASE_URI:", app.config.get("SQLALCHEMY_DATABASE_URI"))
+    app.register_blueprint(auth_bp, url_prefix="auth")
+    app.register_blueprint(main_bp, url_prefix= "main")
 
 
     #initialize and bind SQLAlchemy extension to the app to set db connections

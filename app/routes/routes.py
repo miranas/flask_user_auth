@@ -8,9 +8,9 @@ main = Blueprint("main", __name__)
 def home():
     return jsonify({"message":"Welcome to your Flask app!"})
 
-@main.route("/olemajole")
+@main.route("/index")
 def olemajole():
-    return jsonify({"Message2" : "Welcome to Olemaiole!"})
+    return jsonify({"Message2" : "Welcome to index!"})
 
 
 

@@ -1,19 +1,20 @@
 import flask
-from flask import request, render_template, redirect, url_for, flash, Response
+from flask import request, render_template, redirect, url_for, flash
 from app.models.user_model import User
 from auth.token_utils import generate_token, verify_token
-from app.forms import RegistrationForm
-from flask_login import login_required, current_user #type: ignore
+from app.forms import RegistrationForm, LoginForm,RequestResetForm, ResetPasswordForm, NewPasswordForm
 from app.routes.auth_routes_api import auth_bp
 from werkzeug.security import generate_password_hash
 from app.database import db
-from app.forms import LoginForm, RegistrationForm
-
+from flask_mail import Message
+from app import mail
+from .auth_routes_html import auth_bp
 
 
 
 #Route to handle user registratiom for http form submission
 @auth_bp.route('/register_form', methods=['GET','POST'])
+
 def register_form():
     
     form = RegistrationForm()
@@ -31,7 +32,7 @@ def register_form():
             
             if result["success"]:
                     
-                    flash('Registration successful !', 'success')
+                    flash('Registration successful!', 'success')
                     return redirect(url_for('auth.login_form'))
             
             else:
@@ -49,52 +50,82 @@ def register_form():
 
 #Route to handle user login for http form submission
 @auth_bp.route('/login_form', methods=['GET', 'POST'])
+
 def login_form() -> flask.Response:
     
     form = LoginForm()
 
     if form.validate_on_submit():  # type: ignore
+        # Get the usrname and password from the form
         username = form.username.data
         password = form.password.data
 
         if username is not None and password is not None:
             user = User.authenticate_user(username, password)
+        
         else:
             user = None
 
         if user:
-            flash('Login successful!', 'success')
+
+            flash('Login successful!','success')
             return flask.make_response(redirect(url_for('main.index')))
+        
         else:
+            # If authentication fails, flash an error message
             flash('Invalid username or password', 'danger')
             return flask.make_response(render_template('login_html', form=form))
    
+    
     return flask.make_response(render_template('login_html', form=form))
 
 
 
 
-#Route to handle password reset request and send emails  generates token, and sends a reset
-#link to the user's email containing the token
-@auth_bp.route('/reset-password', methods=['GET', 'POST'])
-def reset_password_request() -> flask.Response:
-    if request.method == 'POST':
-        email = request.form.get('email')
 
+#Route to handle password reset request and send emails  generates token, and sends a reset
+#link to the user's email containing the token"""
+@auth_bp.route('/reset_password_form', methods=['GET','POST'])
+
+def reset_password_request() -> flask.Response:
+    
+    form = RequestResetForm()
+
+    if form.validate_on_submit():  # type: ignore
+        email = form.email.data    
+    
         if not email:
+            # If email is not provided, flash a warning message
             flash('Please enter your email address', 'warning')
             return flask.make_response(render_template('reset_password_request.html'))
-
+       
+        # Check if the user exists with the provided email
         user = User.get_user_by_email(email)
 
         if user:
             # Generate a token for the user
             token = generate_token({'username': user.username})
-            User.update_token(user.username, token)
+            User.update_token(user.username,token)
 
             # Generate the reset link 
-            reset_link = url_for('auth_bp.reset_password', token=token, _external=True)
+            reset_link = url_for('auth.reset_password', token=token, _external=True)
 
+            # Send the reset link to the user's email
+            msg = Message(
+
+                subject = 'Password Reset Request',
+                recipients=[email],
+                body=f'Click the link to reset your password: {reset_link}'
+            )
+            try:
+
+                mail.send(msg)
+
+            except Exception as e:
+
+                flash(f'An error occurred while sending the email: {str(e)}')
+                return flask.make_response(flask.redirect(url_for('auth_bp.reset_password_request')))
+                      
             flash(f'Password reset link has been sent to {email}', 'info')
             return flask.make_response(flask.redirect(url_for('auth.login_form')))
 
@@ -107,22 +138,32 @@ def reset_password_request() -> flask.Response:
 
 
 
-@auth_bp.route('/reset-password/<token>', methods=['GET', 'POST'])
+# Route to handle password reset using the token sent via email
+# This route verifies the token and allows the user to set a new password
+@auth_bp.route('/reset_password_form/<token>', methods=['GET', 'POST'])
+
 def reset_password(token: str) -> flask.Response:
     data = verify_token(token)
 
     if not data:
+        # If the token is invalid or expired, flash an error message and redirect
         flash('The reset link is invalid or has expired. Make a new request', 'danger')
         return flask.make_response(flask.redirect(url_for('auth.reset_password_request')))
 
-    if request.method == "POST":
+    form = ResetPasswordForm()
+
+    if form.validate_on_submit(): # type: ignore 
+            
         new_password = request.form.get('new_password')
         user = User.get_user_by_username(data['username'])
 
+        # Check if the user exists, update the password
         if user:
+
             if new_password is None:
+
                 flash('Please provide a new password', 'warning')
-                return flask.make_response(flask.redirect(url_for('auth.reset_password', token=token)))
+                return flask.make_response(flask.redirect(url_for('auth.reset_password_form', token=token)))
             user.hashed_password = generate_password_hash(new_password)
             
             db.session.commit()
