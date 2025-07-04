@@ -7,6 +7,7 @@ from flask_login import login_required, current_user #type: ignore
 from app.database import db
 from flask_mail import Message
 from app import mail
+from app.logging_config import log_login_attempt, log_password_reset_request, log_password_reset, log_event
 
 
 
@@ -29,8 +30,13 @@ def register():
    
     if not username or not password:
         return jsonify({"success":False,"message":"Missing username or password"}),400
-    
+        #login attempts failed
+        log_login_attempt(username, False)
+
     result = User.register_user(username, password, role)
+
+    # login attemts successful
+    log_login_attempt(username, True)
     
     return jsonify(result), 201 if result ["success"] else 404
 
@@ -139,9 +145,12 @@ def reset_password(token: str):
 
         user.hashed_password = generate_password_hash(new_password)
         db.session.commit()
+        log_password_reset(user.username, True)
         return jsonify({"success": True, "message": "Password reset successful"}), 200
     
     else:
+        
+        log_password_reset_request(username = "", email=data['email'])
         return jsonify({"success":False, "message": "User not found"}),404
 
 
