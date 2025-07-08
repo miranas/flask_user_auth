@@ -9,6 +9,7 @@ from app.database import db
 from flask_mail import Message
 from app import mail
 from .auth_routes_html import auth_bp
+from app.logging_config import log_login_attempt, log_password_reset_request, log_password_reset, log_event
 
 
 
@@ -56,7 +57,7 @@ def login_form() -> flask.Response:
     form = LoginForm()
 
     if form.validate_on_submit():  # type: ignore
-        # Get the usrname and password from the form
+        # Get the username and password from the form
         username = form.username.data
         password = form.password.data
 
@@ -65,10 +66,12 @@ def login_form() -> flask.Response:
         
         else:
             user = None
+            log_login_attempt(username or "", False)
 
         if user:
-
             flash('Login successful!','success')
+            log_login_attempt(username or "", True)
+
             return flask.make_response(redirect(url_for('main.index')))
         
         else:
@@ -92,6 +95,7 @@ def reset_password_request() -> flask.Response:
     form = RequestResetForm()
 
     if form.validate_on_submit():  # type: ignore
+       
         email = form.email.data    
     
         if not email:
@@ -108,7 +112,7 @@ def reset_password_request() -> flask.Response:
             User.update_token(user.username,token)
 
             # Generate the reset link 
-            reset_link = url_for('auth.reset_password', token=token, _external=True)
+            reset_link = url_for('auth.reset_password_form', token=token, _external=True)
 
             # Send the reset link to the user's email
             msg = Message(
@@ -168,11 +172,17 @@ def reset_password(token: str) -> flask.Response:
             
             db.session.commit()
 
+            log_password_reset(user.username, True)
+
             flash("Your password has been reset successfuly", 'success')
             return flask.make_response(flask.redirect(url_for('auth.login_form')))
         
         else:
             flash ('User not found', 'warning')
+
+            # Log the password reset request with an empty username
+            log_password_reset_request(username = "", email=data['email'])
+            
             return flask.make_response(flask.redirect(url_for('auth.reset_password_request')))
     
     # Render the reset password form if GET request

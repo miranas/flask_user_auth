@@ -13,7 +13,7 @@ load_dotenv()
 _secret_key = os.environ.get("SECRET_KEY")
 if _secret_key is None:
     raise ValueError("Secret key not found in environment variables")
-SECRET_KEY:str
+SECRET_KEY = _secret_key
 
 
 

@@ -6,7 +6,6 @@ from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user #type: ignore
 from app.database import db
 from flask_mail import Message
-from app import mail
 from app.logging_config import log_login_attempt, log_password_reset_request, log_password_reset, log_event
 
 
@@ -103,7 +102,7 @@ def reset_password_request():
     reset_link: str = url_for("auth.reset_password", token = token, external = True)
 
     # Send the reset link to the user's email
-
+    from app import mail
     msg = Message(
 
         subject = "Password reset request",

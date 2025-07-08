@@ -35,10 +35,7 @@ def create_app():
 
     
     
-    app.register_blueprint(auth_bp, url_prefix="auth")
-    app.register_blueprint(main_bp, url_prefix= "main")
-
-
+    
     #initialize and bind SQLAlchemy extension to the app to set db connections
     db.init_app(app) 
    
@@ -52,8 +49,8 @@ def create_app():
         db.create_all()
 
         #Let's register Blueprint instances all in one place
-        app.register_blueprint(auth_bp)
-        app.register_blueprint(main)
+        app.register_blueprint(auth_bp, url_prefix = "/auth")
+        #app.register_blueprint(main)
         
 
     return app   

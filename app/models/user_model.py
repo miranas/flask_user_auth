@@ -1,6 +1,7 @@
+from __future__ import annotations
 from datetime import datetime
 from ..database import db
-from typing import Optional
+from typing import Optional, TypeVar, Type
 from werkzeug.security import generate_password_hash, check_password_hash
 from auth.token_utils import generate_token
 
@@ -35,19 +36,22 @@ class User(db.Model):
 
            
     
+  
     @classmethod
-    def get_user_by_username(cls, username: str) -> Optional['User']:
+    def get_user_by_username(cls, username: str) -> Optional[User]:
         """Retrieve a user by username"""
-        return cls.query.filter_by(username=username).first() 
+        return cls.query.filter_by(username=username).first() # type: ignore
+        
     
 
     
     @classmethod
-    def get_user_by_email(cls, email:str) -> Optional['User']:
+    def get_user_by_email(cls, email: str) -> Optional['User']:
         """retrieve a user by email"""
-        return cls.query.filter_by(email=email).first()
+        return cls.query.filter_by(email=email).first() # type: ignore
     
 
+   
     # User registration method
     @classmethod    
     def register_user(cls, username:str, password:str, email:str) -> dict[str, bool | str]:
@@ -147,8 +151,7 @@ class User(db.Model):
         return None
              
     
-
-  
+ 
     
     def __repr__(self):
         return f"<User {self.username} {self.role}>"
