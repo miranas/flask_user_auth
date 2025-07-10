@@ -52,7 +52,7 @@ class User(db.Model):
     
     @classmethod
     def register_user(        
-        cls, username: str, password: str, email: str
+        cls, username: str, password: str, email: str, role:str
     ) -> dict[str, bool | str]:
         
         """Register a new user if the username and email are unique

@@ -25,11 +25,12 @@ def register_form():
         username = form.username.data
         email = form.email.data
         password = form.password.data
+        role =  "user"
 
         #register the user
         if username and password and email:
 
-            result = User.register_user(username, password, email)
+            result = User.register_user(username, password, email, role)
             
             if result["success"]:
                     

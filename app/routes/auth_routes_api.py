@@ -1,18 +1,19 @@
 from flask import Blueprint, request, jsonify, url_for
 from typing import Any
+import re
 from app.models.user_model import User
 from auth.token_utils import generate_token, verify_token
 from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user  # type: ignore
 from app.database import db
 from flask_mail import Message
+from email_validator import validate_email, EmailNotValidError
 from app.logging_config import (
     log_login_attempt,
     log_password_reset_request,
     log_password_reset,
     #log_event,
 )
-
 
 # Blueprint for authentication routes
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -38,7 +39,28 @@ def register():
         # login attempts failed
         log_login_attempt(username, False)
 
-    result = User.register_user(username, password, role)
+    if not email:
+        return (
+            jsonify({"success": False, "message": "Email is required for registration"}),
+            400,
+        )
+        # login attempts failed
+        log_login_attempt(email, False)
+    
+    # Validate email format
+    try:
+        validate_email(email)
+    except EmailNotValidError:
+        return jsonify({"success": False, "message": "Invalid email address"}), 400
+
+
+    # validate username and password:
+    if not re.match(r'^[a-zA-Z0-9_]{3,30}$', username):
+        return jsonify({"success": False, "message": "Username must be alphanumeric and 3-30 charcters long!"}), 400
+    if len (password) < 12:
+        return jsonify({"success":False, "message": "Username must be at least 5 characters!"}), 400
+    
+    result = User.register_user(username, password, email, role)
 
     # login attemts successful
     log_login_attempt(username, True)
