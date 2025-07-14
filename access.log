@@ -1,0 +1,51 @@
+2025-07-14 23:40:33,159: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:40:33,159: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:41:36,444: INFO 127.0.0.1 - - [14/Jul/2025 23:41:36] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-14 23:41:36,499: INFO 127.0.0.1 - - [14/Jul/2025 23:41:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-14 23:43:13,445: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:43:13,445: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:44:04,386: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:44:04,386: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:44:38,074: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:44:38,074: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:44:38,076: INFO  * Restarting with stat
+2025-07-14 23:44:38,815: WARNING  * Debugger is active!
+2025-07-14 23:44:38,826: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:46:35,520: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:46:35,520: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:46:35,521: INFO  * Restarting with stat
+2025-07-14 23:46:36,205: WARNING  * Debugger is active!
+2025-07-14 23:46:36,209: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:46:45,994: INFO 127.0.0.1 - - [14/Jul/2025 23:46:45] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-14 23:46:46,843: INFO 127.0.0.1 - - [14/Jul/2025 23:46:46] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-14 23:46:50,381: INFO 127.0.0.1 - - [14/Jul/2025 23:46:50] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-14 23:47:36,781: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/models/__init__.py', reloading
+2025-07-14 23:47:36,882: INFO  * Restarting with stat
+2025-07-14 23:48:07,182: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:48:07,183: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:48:07,183: INFO  * Restarting with stat
+2025-07-14 23:48:07,877: WARNING  * Debugger is active!
+2025-07-14 23:48:07,881: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:51:06,566: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/models/__init__.py', reloading
+2025-07-14 23:51:06,680: INFO  * Restarting with stat
+2025-07-14 23:51:07,364: WARNING  * Debugger is active!
+2025-07-14 23:51:07,368: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:51:16,583: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:51:16,583: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:51:16,584: INFO  * Restarting with stat
+2025-07-14 23:51:17,272: WARNING  * Debugger is active!
+2025-07-14 23:51:17,276: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:51:53,362: INFO 127.0.0.1 - - [14/Jul/2025 23:51:53] "[33mGET /index HTTP/1.1[0m" 404 -
+2025-07-14 23:52:42,056: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/routes/routes.py', reloading
+2025-07-14 23:52:42,193: INFO  * Restarting with stat
+2025-07-14 23:52:42,915: WARNING  * Debugger is active!
+2025-07-14 23:52:42,919: INFO  * Debugger PIN: 109-568-768
+2025-07-14 23:52:57,227: INFO 127.0.0.1 - - [14/Jul/2025 23:52:57] "[33mGET /index HTTP/1.1[0m" 404 -
+2025-07-14 23:52:57,774: INFO 127.0.0.1 - - [14/Jul/2025 23:52:57] "[33mGET /index HTTP/1.1[0m" 404 -

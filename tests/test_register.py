@@ -3,6 +3,8 @@ from app import create_app
 
 
 def test_register_user():
+    """Test the user registration functionality.
+    This test checks if a user can be registered successfully."""
     app = create_app()
     with app.app_context():
         user = User.get_user_by_username("testuser")
@@ -11,7 +13,7 @@ def test_register_user():
             db.session.delete(user)
             db.session.commit()
 
-        response = User.register_user("testuser", "password12345", "user")
+        response = User.register_user("testuser", "password12345","testuser@example.com", "user")
         assert response["success"] is True
         
         print (response)
@@ -21,7 +23,7 @@ def test_pytest_discovery():
 
 
 def test_authenticate_user():
-
+    """Test the user authentication functionality."""
     app = create_app()
     with app.app_context():
         user = User.get_user_by_username("testuser")

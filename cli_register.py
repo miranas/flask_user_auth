@@ -8,7 +8,11 @@ with app.app_context():
     username = input("Enter username: ")
     email = input("Enter email: ")
     password = input("Enter password: ")
+    role = input("Enter role: ")
 
-    user = User.register_user(username, password, email)
-
-    print(f"User {user.username} registered successfully.")
+    user = User.register_user(username, password, email, role)
+    
+    if user:
+        print(f"User {user['username']} registered successfully.")
+    else:
+        print("Registration failed. Please check your details.")
