@@ -49,3 +49,85 @@
 2025-07-14 23:52:42,919: INFO  * Debugger PIN: 109-568-768
 2025-07-14 23:52:57,227: INFO 127.0.0.1 - - [14/Jul/2025 23:52:57] "[33mGET /index HTTP/1.1[0m" 404 -
 2025-07-14 23:52:57,774: INFO 127.0.0.1 - - [14/Jul/2025 23:52:57] "[33mGET /index HTTP/1.1[0m" 404 -
+2025-07-14 23:53:46,881: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-14 23:53:46,881: INFO [33mPress CTRL+C to quit[0m
+2025-07-14 23:53:46,882: INFO  * Restarting with stat
+2025-07-14 23:53:47,569: WARNING  * Debugger is active!
+2025-07-14 23:53:47,572: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:06:12,113: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:06:12,113: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:06:12,114: INFO  * Restarting with stat
+2025-07-15 00:06:12,818: WARNING  * Debugger is active!
+2025-07-15 00:06:12,823: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:06:41,569: INFO 127.0.0.1 - - [15/Jul/2025 00:06:41] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-15 00:06:41,608: INFO 127.0.0.1 - - [15/Jul/2025 00:06:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-15 00:11:22,768: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/run.py', reloading
+2025-07-15 00:11:22,880: INFO  * Restarting with stat
+2025-07-15 00:11:23,570: WARNING  * Debugger is active!
+2025-07-15 00:11:23,575: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:12:53,441: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/__init__.py', reloading
+2025-07-15 00:12:53,548: INFO  * Restarting with stat
+2025-07-15 00:12:54,251: WARNING  * Debugger is active!
+2025-07-15 00:12:54,255: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:13:13,455: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/routes/routes.py', reloading
+2025-07-15 00:13:13,566: INFO  * Restarting with stat
+2025-07-15 00:13:14,248: WARNING  * Debugger is active!
+2025-07-15 00:13:14,252: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:13:18,957: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:13:18,957: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:13:18,958: INFO  * Restarting with stat
+2025-07-15 00:13:19,657: WARNING  * Debugger is active!
+2025-07-15 00:13:19,660: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:17:31,030: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/__init__.py', reloading
+2025-07-15 00:17:31,143: INFO  * Restarting with stat
+2025-07-15 00:17:31,866: WARNING  * Debugger is active!
+2025-07-15 00:17:31,869: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:17:36,377: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:17:36,377: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:17:36,378: INFO  * Restarting with stat
+2025-07-15 00:17:37,064: WARNING  * Debugger is active!
+2025-07-15 00:17:37,068: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:19:08,197: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:19:08,197: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:19:08,198: INFO  * Restarting with stat
+2025-07-15 00:19:08,931: WARNING  * Debugger is active!
+2025-07-15 00:19:08,935: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:22:58,827: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:22:58,827: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:22:58,828: INFO  * Restarting with stat
+2025-07-15 00:22:59,568: WARNING  * Debugger is active!
+2025-07-15 00:22:59,572: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:25:37,062: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/__init__.py', reloading
+2025-07-15 00:25:37,175: INFO  * Restarting with stat
+2025-07-15 00:25:37,871: WARNING  * Debugger is active!
+2025-07-15 00:25:37,874: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:25:53,401: INFO 127.0.0.1 - - [15/Jul/2025 00:25:53] "GET / HTTP/1.1" 200 -
+2025-07-15 00:26:42,639: INFO 127.0.0.1 - - [15/Jul/2025 00:26:42] "GET /index HTTP/1.1" 200 -
+2025-07-15 00:30:27,574: INFO 127.0.0.1 - - [15/Jul/2025 00:30:27] "GET / HTTP/1.1" 200 -
+2025-07-15 00:35:35,024: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/models/__init__.py', reloading
+2025-07-15 00:35:35,135: INFO  * Restarting with stat
+2025-07-15 00:35:36,352: WARNING  * Debugger is active!
+2025-07-15 00:35:36,356: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:35:44,605: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:35:44,606: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:35:44,607: INFO  * Restarting with stat
+2025-07-15 00:35:45,777: WARNING  * Debugger is active!
+2025-07-15 00:35:45,781: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:43:42,531: INFO  * Detected change in '/home/miran/python-exercises/flask_auth_path/app/__init__.py', reloading
+2025-07-15 00:43:42,680: INFO  * Restarting with stat
+2025-07-15 00:43:43,884: WARNING  * Debugger is active!
+2025-07-15 00:43:43,888: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:43:47,880: INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-15 00:43:47,880: INFO [33mPress CTRL+C to quit[0m
+2025-07-15 00:43:47,881: INFO  * Restarting with stat
+2025-07-15 00:43:49,080: WARNING  * Debugger is active!
+2025-07-15 00:43:49,085: INFO  * Debugger PIN: 109-568-768
+2025-07-15 00:44:01,924: INFO 127.0.0.1 - - [15/Jul/2025 00:44:01] "GET / HTTP/1.1" 200 -

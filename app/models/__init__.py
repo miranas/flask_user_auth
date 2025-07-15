@@ -1,4 +1,4 @@
-"""import sentry_sdk
+import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 sentry_sdk.init(
@@ -9,4 +9,3 @@ sentry_sdk.init(
     send_default_pii=True     # Sends user info (if you use Flask-Login or similar)
 )
 
-"""
