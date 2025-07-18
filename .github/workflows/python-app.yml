@@ -29,7 +29,7 @@ jobs:
 
       - name: Test app endpoint
         run: |
-          sleep 5 #Wait for the app to start
+          sleep 15 #Wait for the app to start
           curl -f http://localhost:5000/
 
       - name: Show container logs
