@@ -13,13 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Buils Docker image
-      run: docker build -t flask_auth_path 
+    - name: Build Docker image
+      run: docker build -t flask_auth_path .
       
 
     - name: Run container and test
       run: |
-        docker run --rm -d -p 5000:5000 --name test-app flask_auth_app
+        docker run --rm -d -p 5000:5000 --name test-app flask_auth_path
     
     - name: Test app endpoint
       run: |
