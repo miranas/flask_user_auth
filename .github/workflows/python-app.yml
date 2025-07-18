@@ -34,3 +34,6 @@ jobs:
 
       - name: Show container logs
         run: docker logs test-app
+
+      - name: Inspect container
+        run: docker inspect test-app
