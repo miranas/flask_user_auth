@@ -30,4 +30,4 @@ jobs:
         curl -f http://localhost:5000/
     
     - name: Show container logs
-      run : docker logs test-app
+      run: docker logs test-app
