@@ -1,4 +1,4 @@
-FROM pyhton:3.12.3-slim
+FROM python:3.12.3-slim
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY . .
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
-CMD ["flask", "run"]
+CMD ["gunicorn", "-w","4","-b", "0.0.0.0:5000", "app:app"]
 
 
 
