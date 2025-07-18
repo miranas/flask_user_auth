@@ -28,3 +28,6 @@ jobs:
       run: |
         sleep 5 #Wait for the app to start
         curl -f http://localhost:5000/
+    
+    - name: Show container logs
+      run : docker logs test-app
