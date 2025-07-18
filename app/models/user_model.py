@@ -6,7 +6,7 @@ authentication, credential updates, token management, and deletion.
 
 from __future__ import annotations
 from datetime import datetime
-from ..database import db
+from app.database import db
 from typing import Optional
 from werkzeug.security import generate_password_hash, check_password_hash
 from auth.token_utils import generate_token
@@ -74,11 +74,16 @@ class User(db.Model):
             token=token,
             role="user",
         )
+        
 
         # Add user to DB
         db.session.add(user)
         db.session.commit()
-        return {"success": True, "message": "User registered successfully"}
+        return {
+            "success": True,
+            "message": "User registered successfully",
+            "token" : token,
+        }
 
     
     @classmethod

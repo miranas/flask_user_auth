@@ -16,7 +16,8 @@ def test_register_user():
         response = User.register_user("testuser", "password12345","testuser@example.com", "user")
         assert response["success"] is True
         
-        print (response)
+        print (response["token"])
+        
 
 def test_pytest_discovery():
     assert True

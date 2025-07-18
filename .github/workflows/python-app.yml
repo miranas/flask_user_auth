@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Buils Docker image
+      run: docker build -t flask_auth_path 
+      
+
+    - name: Run container and test
+      run: |
+        docker run --rm -d -p 5000:5000 --name test-app flask_auth_app
+    
+    - name: Test app endpoint
+      run: |
+        sleep 5 #Wait for the app to start
+        curl -f http://localhost:5000/
