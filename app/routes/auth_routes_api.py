@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user  # type: ignore
 from app.database import db
 from flask_mail import Message
+from auth.token_utils import verify_token
 from email_validator import validate_email, EmailNotValidError
 from app.logging_config import (
     log_login_attempt,
@@ -14,6 +15,7 @@ from app.logging_config import (
     log_password_reset,
     #log_event,
 )
+
 
 # Blueprint for authentication routes
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -128,7 +130,7 @@ def reset_password_request():
 
     # Update the user's token in the database
     user.token = token
-
+    
     db.session.commit()
 
     reset_link: str = url_for("auth.reset_password", token=token, external=True)

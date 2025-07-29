@@ -7,6 +7,8 @@ load_dotenv()
 class Config:
     # General settings
     SECRET_KEY = os.getenv("SECRET_KEY")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
     #DATABASE_URL = os.getenv("DATABASE_URL")
     #DEBUG = False
     #TESTING = False
@@ -14,15 +16,15 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     ENV = "Development"
-    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    #SQLALCHEMY_DATABASE_URI = "sqlite:///prod.db"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI","sqlite:///production.db")
+    
+ 
     
 class ProductionConfig(Config):
     #Debug is inherited from Config class an os set to False
     ENV = "Production"
-    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
+    
 
 
 

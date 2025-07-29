@@ -7,7 +7,7 @@ from app.forms import (
     LoginForm,
     RequestResetForm,
     ResetPasswordForm,
-    NewPasswordForm,
+    
 )
 from app.routes.auth_routes_api import auth_bp
 from werkzeug.security import generate_password_hash
@@ -19,7 +19,7 @@ from app.logging_config import (
     log_login_attempt,
     log_password_reset_request,
     log_password_reset,
-    log_event,
+    #log_event,
 )
 
 

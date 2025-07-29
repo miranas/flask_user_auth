@@ -6,7 +6,7 @@ from .routes.auth_routes_api import auth_bp
 from .routes.routes import main
 from .database import db
 from flask_mail import Mail
-from . import logging_config
+#from .import logging_config
 import sentry_sdk
 
 
@@ -53,10 +53,6 @@ def create_app():
 
         # Let's register Blueprint instances all in one place
         app.register_blueprint(auth_bp, url_prefix="/auth")
-        app.register_blueprint(main)
-
-    @app.route("/test")
-    def test():
-        return "Test route works!"
+        app.register_blueprint(main)   
 
     return app

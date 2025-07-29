@@ -1,12 +1,11 @@
-from flask import Flask, Blueprint, jsonify
+from flask import  Blueprint, jsonify
 
-app = Flask(__name__)
+
 main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
     return jsonify({"message":"Welcome to your Flask app!"})
-
 
 
 @main.route("/index")
