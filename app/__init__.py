@@ -53,6 +53,7 @@ def create_app():
 
         # Let's register Blueprint instances all in one place
         app.register_blueprint(auth_bp, url_prefix="/auth")
-        app.register_blueprint(main)   
+        app.register_blueprint(main)  
+         
 
     return app
