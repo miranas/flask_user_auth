@@ -21,8 +21,11 @@ jobs:
         run: docker build -t flask_auth_path .
 
       - name: Run container and test
-        run: |
-          docker run -d -p 5000:5000 --name test-app -e SECRET_KEY=${{ secrets.GHCR_TOKEN }} flask_auth_path
+        run: |          
+          docker run -d -p 5000:5000 --name test-app \
+            -e SECRET_KEY=${{ secrets.SECRET_KEY }} \
+            -e SQLALCHEMY_DATABASE_URI=${{ secrets.SQLALCHEMY_DATABASE_URI }} \
+            flask_auth_path
 
       - name: Show container status
         run: docker ps -a
