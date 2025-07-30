@@ -40,6 +40,13 @@ def create_app():
     else:
 
         app.config.from_object(ProductionConfig)
+    
+    #Sets the secret key from environment variable if available, otherwise use whatewer in config or finaly sqlite:///test.db
+    
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+        "SQLALCHEMY_DATABASE_URI",
+        app.config.get("SQLALCHEMY_DATABASE_URI", "sqlite:///test.db")  # type: ignore
+    )
 
     # initialize and bind SQLAlchemy extension to the app to set db connections
     db.init_app(app)
